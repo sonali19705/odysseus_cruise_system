@@ -46,3 +46,46 @@ class QuoteResponse(BaseModel):
     nights: int
     passenger_count: int
     price: PriceBreakdown
+
+
+class BookingRequest(BaseModel):
+    cruise_id: int
+    customer_id: int
+    passenger_ages: List[int] = Field(min_length=1, max_length=6)
+    services: Dict[str, bool] = {}
+    promo_code: Optional[str] = None
+
+    @field_validator("passenger_ages")
+    @classmethod
+    def validate_ages(cls, ages):
+        if any(age < 0 or age > 120 for age in ages):
+            raise ValueError(
+                "Passenger age must be between 0 and 120."
+            )
+
+        if not any(age >= 18 for age in ages):
+            raise ValueError(
+                "At least one adult passenger is required."
+            )
+
+        return ages
+
+
+class BookingResponse(BaseModel):
+    reference: str
+    customer_id: int
+    cruise_id: int
+    passenger_count: int
+    price: PriceBreakdown
+    created_at: str
+
+
+class BookingDetailResponse(BaseModel):
+    reference: str
+    customer_id: int
+    cruise_id: int
+    passenger_ages: List[int]
+    services: Dict[str, bool]
+    price: PriceBreakdown
+    promo_code: Optional[str]
+    created_at: str

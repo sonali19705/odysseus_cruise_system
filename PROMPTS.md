@@ -73,6 +73,28 @@ Purpose:
 - Handle validity dates, minimum spend, usage limits, and discount calculation
 - Add unit tests for promotional-code business rules
 
+### 10. Seed Data Debugging
+
+> The quote API returned "Invalid promotional code" even though SUMMER10 should be valid.
+
+Purpose:
+- Diagnose missing promotional seed data.
+- Correct the seed process so cruise and promotional data are seeded independently.
+- Preserve existing database record without duplicate data. 
+
+### 11. Booking API
+
+> start the next step of booking api creation as plan
+
+Purpose:
+- Implement booking confirmation.
+- Persist a historical pricing snapshot.
+- Generate a unique booking reference.
+- Manage cruise capacity.
+- Store passengers and optional services.
+- Record promotional redemptions.
+- Retrieve bookings using their reference.
+
 ## AI Usage Principles
 
 - AI suggestions were reviewed before implementation.
@@ -80,3 +102,4 @@ Purpose:
 - Generated code was tested and modified where required.
 - AI was used as an engineering assistant rather than as a replacement for understanding the implementation.
 - This file is maintained throughout development to provide transparency.
+
