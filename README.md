@@ -12,10 +12,11 @@ The system focuses on business-rule correctness, pricing, promotional-code valid
 - SQLite
 - Pydantic
 - Pytest
+- Git / GitHub
 
 ## Core Features
 
-- View available cruises
+- Cruise availability and capacity validation
 - Passenger validation
 - Adult and child pricing
 - Group discounts
@@ -24,11 +25,13 @@ The system focuses on business-rule correctness, pricing, promotional-code valid
 - Promotional usage limits
 - 12% tax calculation
 - Detailed price breakdown
+- Quote calculation
 - Cruise capacity management
 - Booking confirmation
 - Unique booking references
 - Historical pricing snapshots
 - Booking retrieval
+- Promotional redemption tracking
 - Automated tests
 
 ## Project Structure
@@ -44,14 +47,12 @@ odysseus-practical-assessment/
 │   ├── seed.py
 │   │
 │   ├── routes/
-│   │   ├── cruises.py
 │   │   ├── quotes.py
 │   │   └── bookings.py
 │   │
 │   └── services/
 │       ├── pricing.py
-│       ├── promotions.py
-│       └── booking.py
+│       └── promotions.py
 │
 ├── tests/
 │   ├── test_pricing.py
