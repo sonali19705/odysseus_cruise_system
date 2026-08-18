@@ -1,46 +1,66 @@
 # Cruise Booking System
 
-Odysseus Practical Assessment implementation of a cruise booking system using Python, FastAPI, SQLAlchemy, SQLite, and Pytest.
+A cruise booking system developed for the Odysseus Solutions Campus Placement Technical Assessment.
 
-## Features
+The system focuses on business-rule correctness, pricing, promotional-code validation, capacity management, persistent booking data, and historical price reconstruction.
 
-- Cruise availability
-- Passenger validation
-- Child fare calculation
-- Group discounts
-- Optional services
-- Promotional codes
-- Tax calculation
-- Price breakdown
-- Booking confirmation
-- Capacity management
-- Unique booking references
-- Historical pricing snapshots
-
-## Technology
+## Technology Stack
 
 - Python
 - FastAPI
 - SQLAlchemy
 - SQLite
+- Pydantic
 - Pytest
+
+## Core Features
+
+- View available cruises
+- Passenger validation
+- Adult and child pricing
+- Group discounts
+- Optional services
+- Promotional codes
+- Promotional usage limits
+- 12% tax calculation
+- Detailed price breakdown
+- Cruise capacity management
+- Booking confirmation
+- Unique booking references
+- Historical pricing snapshots
+- Booking retrieval
+- Automated tests
 
 ## Project Structure
 
 ```text
-app/
-├── main.py
-├── database.py
-├── models.py
-├── schemas.py
-├── seed.py
-├── services/
-└── routes/
-
-tests/
-
-BusinessRequirements.md
-TechnicalApproach.md
-UnitTestCases.md
-PROMPTS.md
-README.md
+odysseus-practical-assessment/
+│
+├── app/
+│   ├── main.py
+│   ├── database.py
+│   ├── models.py
+│   ├── schemas.py
+│   ├── seed.py
+│   │
+│   ├── routes/
+│   │   ├── cruises.py
+│   │   ├── quotes.py
+│   │   └── bookings.py
+│   │
+│   └── services/
+│       ├── pricing.py
+│       ├── promotions.py
+│       └── booking.py
+│
+├── tests/
+│   ├── test_pricing.py
+│   ├── test_promotions.py
+│   └── test_booking.py
+│
+├── BusinessRequirements.md
+├── TechnicalApproach.md
+├── UnitTestCases.md
+├── PROMPTS.md
+├── requirements.txt
+└── README.md

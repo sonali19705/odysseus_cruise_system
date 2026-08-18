@@ -31,3 +31,4 @@ Booking confirmation is treated as a single database transaction. Capacity reser
 If any operation fails, the transaction is rolled back so that capacity and promotional usage are not changed without a corresponding confirmed booking.
 
 Capacity is updated using a conditional database update requiring sufficient remaining capacity, reducing the risk of overselling.
+
