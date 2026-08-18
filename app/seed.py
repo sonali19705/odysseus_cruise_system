@@ -10,53 +10,58 @@ def seed_database():
     db = SessionLocal()
 
     try:
-        # Avoid duplicate seed data
-        if db.query(Cruise).count() > 0:
-            print("Database already contains cruise data.")
-            return
+        # Seed cruises only if they don't already exist.
+        if db.query(Cruise).count() == 0:
+            cruises = [
+                Cruise(
+                    cruise_line="Royal Caribbean",
+                    ship="Wonder of the Seas",
+                    destination="Caribbean",
+                    nights=7,
+                    adult_fare=1200,
+                    capacity=12,
+                ),
+                Cruise(
+                    cruise_line="Celebrity Cruises",
+                    ship="Celebrity Beyond",
+                    destination="Mediterranean",
+                    nights=10,
+                    adult_fare=1850,
+                    capacity=4,
+                ),
+                Cruise(
+                    cruise_line="Norwegian Cruise Line",
+                    ship="Norwegian Prima",
+                    destination="Alaska",
+                    nights=5,
+                    adult_fare=950,
+                    capacity=20,
+                ),
+                Cruise(
+                    cruise_line="Princess Cruises",
+                    ship="Sky Princess",
+                    destination="Northern Europe",
+                    nights=12,
+                    adult_fare=2100,
+                    capacity=2,
+                ),
+                Cruise(
+                    cruise_line="MSC Cruises",
+                    ship="MSC Seascape",
+                    destination="Bahamas",
+                    nights=4,
+                    adult_fare=700,
+                    capacity=0,
+                ),
+            ]
 
-        cruises = [
-            Cruise(
-                cruise_line="Royal Caribbean",
-                ship="Wonder of the Seas",
-                destination="Caribbean",
-                nights=7,
-                adult_fare=1200,
-                capacity=12,
-            ),
-            Cruise(
-                cruise_line="Celebrity Cruises",
-                ship="Celebrity Beyond",
-                destination="Mediterranean",
-                nights=10,
-                adult_fare=1850,
-                capacity=4,
-            ),
-            Cruise(
-                cruise_line="Norwegian Cruise Line",
-                ship="Norwegian Prima",
-                destination="Alaska",
-                nights=5,
-                adult_fare=950,
-                capacity=20,
-            ),
-            Cruise(
-                cruise_line="Princess Cruises",
-                ship="Sky Princess",
-                destination="Northern Europe",
-                nights=12,
-                adult_fare=2100,
-                capacity=2,
-            ),
-            Cruise(
-                cruise_line="MSC Cruises",
-                ship="MSC Seascape",
-                destination="Bahamas",
-                nights=4,
-                adult_fare=700,
-                capacity=0,
-            ),
-        ]
+            db.add_all(cruises)
+
+        # Seed promotional codes independently.
+        existing_codes = {
+            promo.code
+            for promo in db.query(PromotionalCode).all()
+        }
 
         promo_codes = [
             PromotionalCode(
@@ -95,14 +100,16 @@ def seed_database():
                 discount_value=5,
                 valid_from=date(2025, 1, 1),
                 valid_to=date(2025, 3, 31),
-                max_total_uses=None,
-                max_uses_per_customer=None,
+                max_total_uses=1000,
+                max_uses_per_customer=5,
                 minimum_spend=0,
             ),
         ]
 
-        db.add_all(cruises)
-        db.add_all(promo_codes)
+        for promo in promo_codes:
+            if promo.code not in existing_codes:
+                db.add(promo)
+
         db.commit()
 
         print("Database seeded successfully.")
@@ -113,7 +120,6 @@ def seed_database():
 
     finally:
         db.close()
-
 
 if __name__ == "__main__":
     seed_database()
