@@ -105,3 +105,15 @@ The system should fail safely without partially updating persistent state when:
 - capacity is insufficient
 - promotional validation fails
 - database persistence fails during confirmation
+
+## 10. Automated Integration Tests
+
+The automated test suite covers:
+
+- successful booking creation
+- unique booking reference generation
+- capacity reduction after successful booking
+- rejection when capacity is insufficient
+- retrieval of a booking by reference
+- promotional redemption persistence
+- historical pricing preservation after a cruise fare changes

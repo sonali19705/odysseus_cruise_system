@@ -95,6 +95,17 @@ Purpose:
 - Record promotional redemptions.
 - Retrieve bookings using their reference.
 
+### 12. Booking Tests
+
+> done next step start
+
+Purpose:
+- Add automated tests for booking creation.
+- Verify capacity management.
+- Verify promotional redemption.
+- Verify booking retrieval.
+- Verify historical pricing remains unchanged after current cruise pricing changes.
+
 ## AI Usage Principles
 
 - AI suggestions were reviewed before implementation.
