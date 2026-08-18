@@ -74,7 +74,7 @@ A tax rate of 12% is applied.
 The chosen calculation rule is:
 
 1. Calculate cruise fare including child pricing.
-2. Apply group discount to cruise fare.
+2. Apply group discount to the cruise fare.
 3. Add optional services.
 4. Apply a valid promotional discount.
 5. Apply 12% tax to the resulting taxable amount.
@@ -136,4 +136,4 @@ All prices are represented as monetary values in USD.
 
 ### Capacity
 
-Capacity is reduced only after a booking is successfully confirmed.
+Cruise capacity is reduced only after a booking is successfully confirmed.

@@ -8,27 +8,25 @@
 - SQLite
 - Pydantic
 - Pytest
+- Git / GitHub
 
-A frontend is intentionally not implemented because the assessment focuses on business rules, data modelling, pricing, persistence, and testing.
+A frontend is intentionally not implemented because the assessment focuses on business rules, data modelling, pricing, persistence, API development, and testing.
+
+SQLite was selected because it provides persistent storage without requiring external database setup, which is appropriate for a time-constrained assessment. SQLAlchemy keeps database access separated from business logic and allows the database to be changed later if required.
+
+---
 
 ## 2. Architecture
 
 The application follows a lightweight layered architecture:
 
 ```text
-API Routes
-    ↓
+Client / Swagger
+      ↓
+FastAPI API Routes
+      ↓
 Service Layer
-    ↓
-SQLAlchemy / Database
-    ↓
-SQLite
-
-### Booking Atomicity
-
-Booking confirmation is treated as a single database transaction. Capacity reservation, booking creation, passenger/service persistence, and promotional redemption are committed together.
-
-If any operation fails, the transaction is rolled back so that capacity and promotional usage are not changed without a corresponding confirmed booking.
-
-Capacity is updated using a conditional database update requiring sufficient remaining capacity, reducing the risk of overselling.
-
+      ↓
+SQLAlchemy ORM
+      ↓
+SQLite Database
