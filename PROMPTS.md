@@ -64,6 +64,15 @@ Purpose:
 - Create required documentation
 - Maintain an AI prompt usage log
 
+### 8. Promotional Code Validation
+
+> start our next step promotional code validation
+
+Purpose:
+- Implement promotional code validation
+- Handle validity dates, minimum spend, usage limits, and discount calculation
+- Add unit tests for promotional-code business rules
+
 ## AI Usage Principles
 
 - AI suggestions were reviewed before implementation.
